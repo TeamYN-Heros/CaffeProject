@@ -1,0 +1,36 @@
+#MenuModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  height: 60vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  align-content: space-around;
+}
+
+#MenuModal img {
+  width: 30vw;
+  height: 60vh;
+}
+
+.nutrients {
+  display: flex;
+  flex-direction: column;
+}
+.nutrients span {
+  margin-bottom: 1vh;
+}
+hr {
+  width: 45vw;
+}
+
+#ModalClose {
+  position: relative;
+  top: -55vh;
+  left: 21vw;
+}
