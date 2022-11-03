@@ -4,11 +4,12 @@ import "../CSS/Modal.css";
 
 /* eslint-disable jsx-a11y/alt-text */
 const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
-  const [length, setLength] = useState(5);
-  const [toggle, setToggle] = useState(false);
-  const [modal, setModal] = useState(false);
-  const [view, setView] = useState({});
+  const [length, setLength] = useState(5); // 펼치기, 접기 기능
+  const [toggle, setToggle] = useState(false); // 펼치기, 접기 기능
+  const [modal, setModal] = useState(false); // 모달 창 온오프 기능
+  const [view, setView] = useState({}); // 결제 창 상품 정보 불러오기
 
+  // 설명 펼치기 / 접기 기능
   const showDesc = () => {
     if (toggle !== true) {
       setLength(desc.length);
@@ -19,19 +20,36 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
     }
   };
 
+  // 모달 상품 결제 창 정보 출력
   const modalMenu = () => {
+    let size = document.getElementById(idx).querySelector(".size").value;
+    let milkType = document
+      .getElementById(idx)
+      .querySelector(".milkType").value;
+    let drinkType = document
+      .getElementById(idx)
+      .querySelector(".drinkType").value;
+
+    if (size === "xx" || milkType === "xx" || drinkType === "xx") {
+      return;
+    }
     setView({
       image: document.getElementById(idx).children[0].currentSrc,
       name: document.getElementById(idx).children[1].innerText,
       desc,
-      size: document.querySelector(".size").value,
-      milkType: document.querySelector(".milkType").value,
-      drinkType: document.querySelector(".drinkType").value,
+      size,
+      milkType,
+      drinkType,
     });
     setModal(!modal);
-    document.querySelector(".size").value = "xx";
-    document.querySelector(".milkType").value = "xx";
-    document.querySelector(".drinkType").value = "xx";
+  };
+
+  // 모달창 닫기 기능 및 각 상품 선택 메뉴 초기화
+  const ModalClose = () => {
+    document.getElementById(idx).querySelector(".size").value = "xx";
+    document.getElementById(idx).querySelector(".milkType").value = "xx";
+    document.getElementById(idx).querySelector(".drinkType").value = "xx";
+    setModal(false);
   };
 
   return (
@@ -74,7 +92,7 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
         </div>
 
         <button className="BtnBasket" id={idx} onClick={modalMenu}>
-          ADD TO BASKET
+          구매하기
         </button>
       </span>
       <Modal isOpen={modal} id="MenuModal">
@@ -84,24 +102,31 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
         <p>{view.desc}</p>
         <hr />
         <div className="nutrients">
-          <h3>제품 영양 정보</h3>
-          <span>{nutrients.size}</span>
-          <span>1회 제공량 (kcal) : {nutrients.Kca}</span>
-          <span>나트륨 (mg) : {nutrients.Na}</span>
-          <span>포화지방 : {nutrients.fat}</span>
-          <span>당류 : {nutrients.sugar}</span>
-          <span>단백질 : {nutrients.protein}</span>
-          <span>카페인 : {nutrients.Caffeine}</span>
-          <h3>선택 내역</h3>
-          <span>사이즈 : {view.size}</span>
-          <span>우유 종류 : {view.milkType}</span>
-          <span>Ice / Hot: {view.drinkType}</span>
+          <span>
+            <h3>제품 영양 정보</h3>
+            <div>{nutrients.size}</div>
+            <div>1회 제공량 (kcal) : {nutrients.kcal}</div>
+            <div>나트륨 (mg) : {nutrients.Na}</div>
+            <div>포화지방 : {nutrients.fat}</div>
+            <div>당류 : {nutrients.sugar}</div>
+            <div>단백질 : {nutrients.protein}</div>
+            <div>카페인 : {nutrients.Caffeine}</div>
+          </span>
+          <span>
+            <h3>선택 내역</h3>
+            <div>사이즈 : {view.size}</div>
+            <div>우유 종류 : {view.milkType}</div>
+            <div>Ice / Hot: {view.drinkType}</div>
+          </span>
         </div>
         <hr />
-        <button>결제하기</button>
-        <button id="ModalClose" onClick={modalMenu}>
-          닫기
-        </button>
+        <span>
+          <button>담기</button>
+          <button>결제하기</button>
+          <button id="ModalClose" onClick={ModalClose}>
+            닫기
+          </button>
+        </span>
       </Modal>
     </>
   );

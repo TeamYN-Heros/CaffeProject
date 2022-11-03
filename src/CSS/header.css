@@ -1,11 +1,14 @@
+/* 로컬 폰트 추가 및 적용*/
 @font-face {
   font-family: "jua";
   src: url("../FONTS/BMJUA_otf.otf");
 }
+
 * {
   font-family: "jua";
 }
 
+/* 메뉴 바  */
 .header {
   display: flex;
   flex-wrap: wrap;
@@ -64,6 +67,7 @@ span select:focus {
   outline: none;
 }
 
+/* 상품 레이아웃 */
 .ItemLayout {
   display: flex;
   flex-direction: column;
@@ -134,6 +138,7 @@ span select {
   margin-right: 4vw;
 }
 
+/* 결제 버튼 */
 .BtnBasket {
   margin-top: 2vw;
   padding: 1vw;
@@ -149,6 +154,7 @@ span select {
   font-weight: bold;
 }
 
+/* 스토리  */
 .Message {
   margin: 0;
   display: flex;

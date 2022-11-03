@@ -20,17 +20,12 @@
 
 .nutrients {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-start;
 }
 .nutrients span {
-  margin-bottom: 1vh;
+  margin: 1vw 4vw;
 }
 hr {
   width: 45vw;
-}
-
-#ModalClose {
-  position: relative;
-  top: -55vh;
-  left: 21vw;
 }
