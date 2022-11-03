@@ -4,7 +4,7 @@ import "../CSS/Modal.css";
 
 /* eslint-disable jsx-a11y/alt-text */
 const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
-  const [length, setLength] = useState(5); // 펼치기, 접기 기능
+  const [length, setLength] = useState(10); // 펼치기, 접기 기능
   const [toggle, setToggle] = useState(false); // 펼치기, 접기 기능
   const [modal, setModal] = useState(false); // 모달 창 온오프 기능
   const [view, setView] = useState({}); // 결제 창 상품 정보 불러오기
@@ -16,7 +16,7 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
       setToggle(!toggle);
     } else {
       setToggle(!toggle);
-      setLength(5);
+      setLength(10);
     }
   };
 
@@ -58,11 +58,11 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
         <img src={image} id="MenuImg" />
         <h3>{name}</h3>
         <p>
-          {desc.length > 5 ? desc.slice(0, length) + "..." : desc}
-          {desc.length > 5 ? (
-            <button onClick={showDesc}>{toggle ? "접기" : "펼치기"}</button>
-          ) : null}
+          {desc.length > 10 ? <>{desc.slice(0, length)}</> : desc}
+          {toggle ? null : "..."}
+          <button onClick={showDesc}>{toggle ? "접기" : "펼치기"}</button>
         </p>
+
         <div className="ItemAttribute">
           <span>Size</span>
           <span>
