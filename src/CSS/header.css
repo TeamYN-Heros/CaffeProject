@@ -167,3 +167,8 @@ span select {
   margin-right: 4vw;
   margin-bottom: 10vh;
 }
+
+/* 모달 */
+.HeaderModalTrue {
+  top: 10px;
+}
