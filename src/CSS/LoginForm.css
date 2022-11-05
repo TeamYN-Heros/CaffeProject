@@ -1,0 +1,54 @@
+#LoginWrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#LoginForm {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  padding: 2vw;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#LoginForm input,
+#LoginForm button {
+  padding: 5px;
+  border-radius: 10px;
+  border: 0.2px solid gray;
+  margin-bottom: 1vh;
+}
+
+#LoginForm input {
+  width: 40vw;
+  height: 3vh;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+#loginModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 44vw;
+  height: 39vh;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+  margin-top: 25vh;
+  margin-bottom: 25vh;
+  margin-left: auto;
+  margin-right: auto;
+}

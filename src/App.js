@@ -1,14 +1,14 @@
-import ItemList from "./components/ItemList";
-import Header from "./components/Header";
-import Story from "./components/Story";
-import HeaderModal from "./components/HeaderModal";
+import ItemList from "./components/ItemList"; // 메뉴 리스트 레이아웃
+import Header from "./components/Header"; // 네비게이션 레이아웃
+import Story from "./components/Story"; // 스토리 레이아웃
+import data from "./JSON/ImageURL.json"; // Dummy Data 불러오기
 
-function App() {
+function App({ login }) {
   return (
     <div className="App">
-      <Header />
+      <Header login={login} />
       <Story />
-      <ItemList />
+      <ItemList data={data} />
     </div>
   );
 }

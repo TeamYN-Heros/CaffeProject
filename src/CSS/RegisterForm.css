@@ -1,0 +1,40 @@
+#RegisterWrap {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#RegisterForm {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#RegisterForm input,
+#RegisterForm button {
+  padding: 5px;
+  border-radius: 10px;
+  border: 0.2px solid #f6f5ef;
+  margin-bottom: 1vh;
+}
+
+#RegisterForm input {
+  width: 40vw;
+  height: 3vh;
+  margin-bottom: 1vh;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}

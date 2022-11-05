@@ -1,26 +1,27 @@
 .headerModalPosition {
-    position: absolute;
+  position: absolute;
+  right: 0.5vw;
 }
 
 .headerModalBox {
-    width: 100px;
-    height: 100%;
-    background-color: white;
-    /*border: 1px solid rebeccapurple;*/
-    box-shadow: 1px 1px 5px grey;
-    display: flex;
-    flex-direction: column;
-    font-size: 18px;
+  width: 11vw;
+  height: 100%;
+  background-color: white;
+  /*border: 1px solid rebeccapurple;*/
+  box-shadow: 1px 1px 5px grey;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
 }
 
 .headerModalUL {
-    list-style: none;
-    text-align: left;
-    padding-left: 20px;
-    margin: 10px 0;
+  list-style: none;
+  text-align: left;
+  padding-left: 20px;
+  margin: 10px 0;
 }
 
 .headerModalLI {
-    padding: 3px 0;
-    cursor: pointer;
+  padding: 3px 0;
+  cursor: pointer;
 }

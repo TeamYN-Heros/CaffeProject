@@ -172,3 +172,12 @@ span select {
 .HeaderModalTrue {
   top: 10px;
 }
+
+.ItemAttribute #amount {
+  margin-top: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

@@ -8,7 +8,19 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
   const [toggle, setToggle] = useState(false); // 펼치기, 접기 기능
   const [modal, setModal] = useState(false); // 모달 창 온오프 기능
   const [view, setView] = useState({}); // 결제 창 상품 정보 불러오기
+  const [count, setCount] = useState(0); // 수량 정보
 
+  // 수량 추가 및 제거
+  const Increase = () => {
+    setCount(count + 1);
+  };
+
+  const Decrease = () => {
+    if (count === 0) {
+      return;
+    }
+    setCount(count - 1);
+  };
   // 설명 펼치기 / 접기 기능
   const showDesc = () => {
     if (toggle !== true) {
@@ -21,34 +33,45 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
   };
 
   // 모달 상품 결제 창 정보 출력
+
   const modalMenu = () => {
-    let size = document.getElementById(idx).querySelector(".size").value;
-    let milkType = document
+    let mImage = document.getElementById(idx).children[0].currentSrc;
+    let mName = document.getElementById(idx).children[1].innerText;
+    let mSize = document.getElementById(idx).querySelector(".size").value;
+    let mMilkType = document
       .getElementById(idx)
       .querySelector(".milkType").value;
-    let drinkType = document
+    let mDrinkType = document
       .getElementById(idx)
       .querySelector(".drinkType").value;
-
-    if (size === "xx" || milkType === "xx" || drinkType === "xx") {
+    let mAmount = document
+      .getElementById(idx)
+      .querySelector(".amount").innerText;
+    if (
+      mSize === "xx" ||
+      mMilkType === "xx" ||
+      mDrinkType === "xx" ||
+      mAmount === "0"
+    ) {
       return;
     }
     setView({
-      image: document.getElementById(idx).children[0].currentSrc,
-      name: document.getElementById(idx).children[1].innerText,
+      mImage,
+      mName,
       desc,
-      size,
-      milkType,
-      drinkType,
+      mSize,
+      mMilkType,
+      mDrinkType,
+      mAmount,
     });
     setModal(!modal);
   };
-
   // 모달창 닫기 기능 및 각 상품 선택 메뉴 초기화
   const ModalClose = () => {
     document.getElementById(idx).querySelector(".size").value = "xx";
     document.getElementById(idx).querySelector(".milkType").value = "xx";
     document.getElementById(idx).querySelector(".drinkType").value = "xx";
+    document.getElementById(idx).querySelector(".amount").innerText = "0";
     setModal(false);
   };
 
@@ -62,7 +85,6 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
           {toggle ? null : "..."}
           <button onClick={showDesc}>{toggle ? "접기" : "펼치기"}</button>
         </p>
-
         <div className="ItemAttribute">
           <span>Size</span>
           <span>
@@ -90,14 +112,21 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
             <option value="hot">Hot</option>
           </select>
         </div>
-
+        <div className="ItemAttribute">
+          <span id="amount">Amount</span>
+          <span>
+            <span onClick={Decrease}>-</span>
+            <span className="amount">{count}</span>
+            <span onClick={Increase}>+</span>
+          </span>
+        </div>
         <button className="BtnBasket" id={idx} onClick={modalMenu}>
           구매하기
         </button>
       </span>
       <Modal isOpen={modal} id="MenuModal">
-        <img src={view.image} />
-        <h3>{view.name}</h3>
+        <img src={view.mImage} />
+        <h3>{view.mName}</h3>
         <hr />
         <p>{view.desc}</p>
         <hr />
@@ -114,9 +143,10 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
           </span>
           <span>
             <h3>선택 내역</h3>
-            <div>사이즈 : {view.size}</div>
-            <div>우유 종류 : {view.milkType}</div>
-            <div>Ice / Hot: {view.drinkType}</div>
+            <div>사이즈 : {view.mSize}</div>
+            <div>우유 종류 : {view.mMilkType}</div>
+            <div>Ice / Hot: {view.mDrinkType}</div>
+            <div>수량: {view.mAmount}</div>
           </span>
         </div>
         <hr />

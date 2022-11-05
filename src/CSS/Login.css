@@ -1,0 +1,21 @@
+.ModalForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40vw;
+  height: 40vh;
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+  margin-left: auto;
+  margin-right: auto;
+  outline: none;
+  padding: 2vw;
+}
+
+.ModalForm #LoginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
