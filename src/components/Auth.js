@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import App from "../App";
 
 const Auth = () => {
-  const [login, setLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
     if (localStorage.getItem("email")) {
-      setLogin(!login);
+      setIsLogin(!isLogin);
     }
   }, []);
-  return <App login={login} />;
+
+  return <App isLogin={isLogin} />;
 };
 
 export default Auth;

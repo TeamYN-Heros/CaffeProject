@@ -8,7 +8,8 @@ import { HiOutlineLockOpen, HiUserCircle } from "react-icons/hi";
 import { BiShoppingBag } from "react-icons/bi";
 
 const HeaderModal = ({ userLogin }) => {
-  const [login, setLogin] = useState(false);
+  console.log(userLogin);
+  const [isLogin, setIsLogin] = useState(false);
   const [cart, setCart] = useState(false);
   const [order, setOrder] = useState(false);
   const [myPage, setMyPage] = useState(false);
@@ -32,7 +33,7 @@ const HeaderModal = ({ userLogin }) => {
   const shoeModal = (e) => {
     switch (e.target.innerText) {
       case "로그인":
-        return setLogin(!login);
+        return setIsLogin(!isLogin);
       case "로그아웃":
         return localStorage.clear(), window.location.reload();
       case "장바구니":
@@ -83,7 +84,7 @@ const HeaderModal = ({ userLogin }) => {
           </ul>
         </div>
       </div>
-      {login ? <Login /> : null}
+      {isLogin ? <Login /> : null}
       {userLogin && myPage ? <MyPage userObj={userObj} /> : null}
     </>
   );

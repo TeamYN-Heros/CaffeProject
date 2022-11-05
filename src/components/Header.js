@@ -6,7 +6,8 @@ import HeaderModal from "./HeaderModal";
 import { useState } from "react";
 
 // 메뉴바 구현
-const Header = ({ login }) => {
+const Header = ({ isLogin }) => {
+  console.log(isLogin);
   const [open, setOpen] = useState(false);
   const ToggleOpen = () => {
     setOpen(!open);
@@ -22,7 +23,7 @@ const Header = ({ login }) => {
         <input className="item" id="searchBar" placeholder="search" />
         <span className="item">
           <AiOutlineMenu onClick={ToggleOpen} />
-          {open === true ? <HeaderModal userLogin={login} /> : null}
+          {open === true ? <HeaderModal userLogin={isLogin} /> : null}
         </span>
       </div>
     </>
