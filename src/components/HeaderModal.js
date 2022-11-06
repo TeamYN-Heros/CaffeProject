@@ -8,7 +8,6 @@ import { HiOutlineLockOpen, HiUserCircle } from "react-icons/hi";
 import { BiShoppingBag } from "react-icons/bi";
 
 const HeaderModal = ({ userLogin }) => {
-  console.log(userLogin);
   const [isLogin, setIsLogin] = useState(false);
   const [cart, setCart] = useState(false);
   const [order, setOrder] = useState(false);

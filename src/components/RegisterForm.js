@@ -63,7 +63,6 @@ const RegisterForm = () => {
     ).toString();
     const cipherJoin = cryptoJs.AES.encrypt(joinDate, "sha512").toString();
     localStorage.setItem("email", cipherEmail);
-
     localStorage.setItem("password", cipherPassword);
     localStorage.setItem("name", cipherName);
     localStorage.setItem("birth", cipherBirth);

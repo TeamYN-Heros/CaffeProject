@@ -7,7 +7,6 @@ import { useState } from "react";
 
 // 메뉴바 구현
 const Header = ({ isLogin }) => {
-  console.log(isLogin);
   const [open, setOpen] = useState(false);
   const ToggleOpen = () => {
     setOpen(!open);

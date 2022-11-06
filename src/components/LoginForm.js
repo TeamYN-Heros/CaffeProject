@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
+import cryptoJs from "crypto-js";
 import "../CSS/LoginForm.css";
 
 const LoginForm = () => {
@@ -6,7 +7,15 @@ const LoginForm = () => {
     e.preventDefault();
     const userEmail = localStorage.getItem("email");
     const userPassword = localStorage.getItem("password");
-    if (e.target[0].value === userEmail && e.target[1].value === userPassword) {
+    const cipherEmail = cryptoJs.AES.encrypt(
+      e.target[0].value,
+      "sha512"
+    ).toString();
+    const cipherPassword = cryptoJs.AES.encrypt(
+      e.target[1].value,
+      "sha512"
+    ).toString();
+    if (cipherEmail === userEmail && cipherPassword === userPassword) {
       window.location.reload();
     }
   };
