@@ -1,6 +1,5 @@
 import cryptoJs from "crypto-js";
 import "../CSS/RegisterForm.css";
-
 const RegisterForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
@@ -62,14 +61,25 @@ const RegisterForm = () => {
       "sha512"
     ).toString();
     const cipherJoin = cryptoJs.AES.encrypt(joinDate, "sha512").toString();
-    localStorage.setItem("email", cipherEmail);
-    localStorage.setItem("password", cipherPassword);
-    localStorage.setItem("name", cipherName);
-    localStorage.setItem("birth", cipherBirth);
-    localStorage.setItem("tel", cipherTel);
-    localStorage.setItem("joinDate", cipherJoin);
+    // localStorage.setItem("email", cipherEmail);
+    // localStorage.setItem("password", cipherPassword);
+    // localStorage.setItem("name", cipherName);
+    // localStorage.setItem("birth", cipherBirth);
+    // localStorage.setItem("tel", cipherTel);
+    // localStorage.setItem("joinDate", cipherJoin);
+    let userObj = {
+      email: cipherEmail,
+      password: cipherPassword,
+      name: cipherName,
+      birth: cipherBirth,
+      tel: cipherTel,
+      joinDate: cipherJoin,
+      accessToken: Date.now() + Math.round(Math.random() * 100000),
+    };
+    localStorage.setItem(`${userObj.accessToken}`, JSON.stringify(userObj));
     window.location.reload();
   };
+
   return (
     <div id="RegisterWrap">
       <form onSubmit={onSubmit} id="RegisterForm">

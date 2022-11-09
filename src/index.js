@@ -2,13 +2,14 @@ import React from "react";
 import ReactModal from "react-modal";
 import AppRouter from "./routes/router";
 import Auth from "./components/Auth";
-import {store} from "./app/store";
+import { store } from "./app/store";
 import { Provider } from "react-redux";
-import {createRoot} from "react-dom/client";
+import { createRoot } from "react-dom/client";
 
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 root.render(
+  // 리덕스 스토어 제공
   <Provider store={store}>
     <AppRouter>
       <Auth />

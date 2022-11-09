@@ -21,7 +21,11 @@
 .nutrients {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+  width: 36vw;
 }
 .nutrients span {
   margin: 1vw 4vw;

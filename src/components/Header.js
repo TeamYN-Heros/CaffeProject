@@ -4,9 +4,10 @@ import { AiOutlineMenu } from "react-icons/ai";
 import Logo from "../IMAGE/logo.png";
 import HeaderModal from "./HeaderModal";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // 메뉴바 구현
-const Header = ({ isLogin }) => {
+const Header = () => {
   const [open, setOpen] = useState(false);
   const ToggleOpen = () => {
     setOpen(!open);
@@ -15,14 +16,16 @@ const Header = ({ isLogin }) => {
   return (
     <>
       <div className="header">
-        <img src={Logo} />
+        <Link to="/">
+          <img src={Logo} />
+        </Link>
         <span className="item">ALL</span>
         <span className="item">COFFEE</span>
         <span className="item">TEA</span>
         <input className="item" id="searchBar" placeholder="search" />
         <span className="item">
           <AiOutlineMenu onClick={ToggleOpen} />
-          {open === true ? <HeaderModal userLogin={isLogin} /> : null}
+          {open === true ? <HeaderModal /> : null}
         </span>
       </div>
     </>

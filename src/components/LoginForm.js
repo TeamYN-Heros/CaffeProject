@@ -2,22 +2,35 @@
 import cryptoJs from "crypto-js";
 import "../CSS/LoginForm.css";
 
+let key = [];
+let userObj = [];
 const LoginForm = () => {
   const onSubmit = (e) => {
     e.preventDefault();
-    const userEmail = localStorage.getItem("email");
-    const userPassword = localStorage.getItem("password");
-    const cipherEmail = cryptoJs.AES.encrypt(
-      e.target[0].value,
-      "sha512"
-    ).toString();
-    const cipherPassword = cryptoJs.AES.encrypt(
-      e.target[1].value,
-      "sha512"
-    ).toString();
-    if (cipherEmail === userEmail && cipherPassword === userPassword) {
-      window.location.reload();
+    const inputEmail = e.target[0].value;
+    const inputPassword = e.target[1].value;
+    for (let i = 0; i < localStorage.length; i++) {
+      key[i] = localStorage.key(i);
     }
+    key.forEach(
+      (key, index) =>
+        (userObj[index] = JSON.parse(localStorage.getItem(`${key}`)))
+    );
+    userObj.map((user) => {
+      if (
+        inputEmail ===
+          cryptoJs.AES.decrypt(`${user.email}`, "sha512").toString(
+            cryptoJs.enc.Utf8
+          ) &&
+        inputPassword ===
+          cryptoJs.AES.decrypt(`${user.password}`, "sha512").toString(
+            cryptoJs.enc.Utf8
+          )
+      ) {
+        localStorage.setItem("accessToken", user.accessToken);
+        window.location.reload();
+      }
+    });
   };
   return (
     <div id="LoginWrap">
