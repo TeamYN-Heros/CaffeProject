@@ -9,12 +9,11 @@ const MyPage = ({ userObj }) => {
   const [chPassword, setChPassword] = useState(false);
   const onClose = () => {
     setOpen(!open);
-    window.location.reload();
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    let password = CryptoJS.AES.decrypt(userObj.Password, "sha512").toString(
+    let password = CryptoJS.AES.decrypt(userObj[1].password, "sha512").toString(
       CryptoJS.enc.Utf8
     );
 
@@ -24,18 +23,17 @@ const MyPage = ({ userObj }) => {
       return;
     }
   };
-
   const onChPassword = () => {
     setChPassword(!chPassword);
   };
-
   const onSetPassword = (e) => {
     e.preventDefault();
     const cipherPassword = CryptoJS.AES.encrypt(
       e.target[0].value,
       "sha512"
     ).toString();
-    localStorage.setItem("password", cipherPassword);
+    console.log((userObj[1].password = cipherPassword));
+    localStorage.setItem(userObj[0], JSON.stringify(userObj[1]));
     window.location.reload();
   };
   return (
@@ -45,7 +43,7 @@ const MyPage = ({ userObj }) => {
           <div>
             <span>이메일 : </span>
             <span>
-              {CryptoJS.AES.decrypt(userObj.Email, "sha512").toString(
+              {CryptoJS.AES.decrypt(userObj[1].email, "sha512").toString(
                 CryptoJS.enc.Utf8
               )}
             </span>
@@ -53,7 +51,7 @@ const MyPage = ({ userObj }) => {
           <div>
             <span>이름 : </span>
             <span>
-              {CryptoJS.AES.decrypt(userObj.Name, "sha512").toString(
+              {CryptoJS.AES.decrypt(userObj[1].name, "sha512").toString(
                 CryptoJS.enc.Utf8
               )}
             </span>
@@ -61,7 +59,7 @@ const MyPage = ({ userObj }) => {
           <div>
             <span>생년월일 : </span>
             <span>
-              {CryptoJS.AES.decrypt(userObj.Birth, "sha512").toString(
+              {CryptoJS.AES.decrypt(userObj[1].birth, "sha512").toString(
                 CryptoJS.enc.Utf8
               )}
             </span>
@@ -69,7 +67,7 @@ const MyPage = ({ userObj }) => {
           <div>
             <span>가입일자 : </span>
             <span>
-              {CryptoJS.AES.decrypt(userObj.joinDate, "sha512").toString(
+              {CryptoJS.AES.decrypt(userObj[1].joinDate, "sha512").toString(
                 CryptoJS.enc.Utf8
               )}
             </span>

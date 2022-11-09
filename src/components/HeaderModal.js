@@ -7,37 +7,32 @@ import MyPage from "./MyPage";
 import { HiOutlineLockOpen, HiUserCircle } from "react-icons/hi";
 import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../features/authSlice";
 
-const HeaderModal = ({ userLogin }) => {
-  const [isLogin, setIsLogin] = useState(false);
-  const [cart, setCart] = useState(false);
-  const [order, setOrder] = useState(false);
+const HeaderModal = () => {
+  let key = [];
+  let userObj = [];
+  const auth = useSelector((state) => state.auth.value);
+  const [isLogin, setIsLogin] = useState(auth);
   const [myPage, setMyPage] = useState(false);
 
-  let Email = localStorage.getItem("email");
-  let Password = localStorage.getItem("password");
-  let Name = localStorage.getItem("name");
-  let Tel = localStorage.getItem("tel");
-  let Birth = localStorage.getItem("birth");
-  let joinDate = localStorage.getItem("joinDate");
+  for (let i = 0; i < localStorage.length; i++) {
+    key[i] = localStorage.key(i);
+  }
+  key.forEach(
+    (key, index) =>
+      (userObj[index] = JSON.parse(localStorage.getItem(`${key}`)))
+  );
 
-  let userObj = {
-    Email,
-    Password,
-    Name,
-    Tel,
-    Birth,
-    joinDate,
-  };
+  const dispatch = useDispatch();
 
   const shoeModal = (e) => {
     switch (e.target.innerText) {
       case "로그인":
         return setIsLogin(!isLogin);
       case "로그아웃":
-        return localStorage.clear(), window.location.reload();
-      case "장바구니":
-        return console.log("장바구니");
+        return localStorage.removeItem("accessToken"), window.location.reload();
       case "주문내역":
         return console.log("주문내역");
       case "마이페이지":
@@ -46,7 +41,6 @@ const HeaderModal = ({ userLogin }) => {
         return;
     }
   };
-
   return (
     <>
       <div className={"headerModalPosition"}>
@@ -54,12 +48,18 @@ const HeaderModal = ({ userLogin }) => {
           <ul className={"headerModalUL"}>
             {/*<Link>로 감싸주기*/}
             <li className={"headerModalLI"} onClick={shoeModal}>
-              {userLogin ? (
+              {auth ? (
                 <>
-                  {CryptoJs.AES.decrypt(userObj.Name, "sha512").toString(
-                    CryptoJs.enc.Utf8
-                  )}
-
+                  {userObj.map((user) => {
+                    if (
+                      user.accessToken ===
+                      Number(localStorage.getItem("accessToken"))
+                    ) {
+                      return CryptoJs.AES.decrypt(user.name, "sha512").toString(
+                        CryptoJs.enc.Utf8
+                      );
+                    }
+                  })}
                   <button>
                     <HiOutlineLockOpen />
                     로그아웃
@@ -70,7 +70,7 @@ const HeaderModal = ({ userLogin }) => {
               )}
             </li>
             <Link to="/cart">
-              <li className={"headerModalLI"} onClick={shoeModal}>
+              <li className={"headerModalLI"}>
                 <AiOutlineShoppingCart />
                 장바구니
               </li>
@@ -86,8 +86,8 @@ const HeaderModal = ({ userLogin }) => {
           </ul>
         </div>
       </div>
-      {isLogin ? <Login /> : null}
-      {userLogin && myPage ? <MyPage userObj={userObj} /> : null}
+      {auth || isLogin ? null : <Login />}
+      {auth && myPage ? <MyPage userObj={userObj} /> : null}
     </>
   );
 };

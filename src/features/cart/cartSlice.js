@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PURGE } from "redux-persist";
 
 const initialState = {
-  favorites: []
+  favorites: [],
 };
 
 const Cart = createSlice({
@@ -20,15 +20,11 @@ const Cart = createSlice({
       }
     },
     incrementQuantity: (state, action) => {
-      const item = state.favorites.find(
-        (item) => item.id === action.payload
-      );
+      const item = state.favorites.find((item) => item.id === action.payload);
       item.quantity++;
     },
     decrementQuantity: (state, action) => {
-      const item = state.favorites.find(
-        (item) => item.id === action.payload
-      );
+      const item = state.favorites.find((item) => item.id === action.payload);
       if (item.quantity === 1) {
         item.quantity = 1;
       } else {
@@ -52,7 +48,9 @@ const Cart = createSlice({
 
 export const cartReducer = Cart.reducer;
 export const {
-  increment, decrement, incrementByAmount,
+  increment,
+  decrement,
+  incrementByAmount,
   addToFavorites,
   incrementQuantity,
   decrementQuantity,

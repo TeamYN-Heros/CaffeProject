@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import App from "../App";
+import { useDispatch } from "react-redux";
+import { login, logout } from "../features/authSlice";
 
 const Auth = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    if (localStorage.getItem("email")) {
-      setIsLogin(!isLogin);
+    if (localStorage.getItem("accessToken")) {
+      dispatch(login());
+    } else {
+      dispatch(logout());
     }
   }, []);
 
-  return <App isLogin={isLogin} />;
+  return <App />;
 };
 
 export default Auth;

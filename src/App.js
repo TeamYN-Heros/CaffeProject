@@ -3,10 +3,10 @@ import Header from "./components/Header"; // 네비게이션 레이아웃
 import Story from "./components/Story"; // 스토리 레이아웃
 import data from "./JSON/ImageURL.json"; // Dummy Data 불러오기
 
-function App({ isLogin }) {
+function App() {
   return (
     <div className="App">
-      <Header isLogin={isLogin} />
+      <Header />
       <Story />
       <ItemList data={data} />
     </div>
