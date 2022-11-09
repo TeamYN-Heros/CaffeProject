@@ -6,6 +6,7 @@ import Login from "./Login";
 import MyPage from "./MyPage";
 import { HiOutlineLockOpen, HiUserCircle } from "react-icons/hi";
 import { BiShoppingBag } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const HeaderModal = ({ userLogin }) => {
   const [isLogin, setIsLogin] = useState(false);
@@ -68,10 +69,12 @@ const HeaderModal = ({ userLogin }) => {
                 "로그인"
               )}
             </li>
-            <li className={"headerModalLI"} onClick={shoeModal}>
-              <AiOutlineShoppingCart />
-              장바구니
-            </li>
+            <Link to="/cart">
+              <li className={"headerModalLI"} onClick={shoeModal}>
+                <AiOutlineShoppingCart />
+                장바구니
+              </li>
+            </Link>
             <li className={"headerModalLI"} onClick={shoeModal}>
               <BiShoppingBag />
               주문내역

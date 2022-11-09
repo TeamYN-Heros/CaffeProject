@@ -1,0 +1,162 @@
+.shoppingCartBox {
+  width: 1095.190px;
+  /* background-color: rgb(255, 255, 255); */
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  margin: auto auto;
+  justify-content: space-around;
+  position: relative;
+  top: 40px;
+};
+
+.cartBoxs {
+  display: flex;
+  flex-direction: row;
+}
+
+.cartBox {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: 100%;
+}
+
+.cartBoxName {
+  font-size: 30px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+
+.allCartCheck {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid gray;
+}
+
+.allCartCheck-start {
+  margin: 5px;
+  cursor: pointer;
+  border: 1px solid rgb(175, 175, 175);
+  width: 14px;
+  height: 14px;
+  text-align: center;
+  line-height: 14px;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+.allCartCheck-start:hover {
+  background-color: #007042;
+  color: white;
+}
+
+.allCartCheck-center {
+  flex-grow: 1;
+  margin-left: 7px;
+}
+
+.allCartCheck-end {
+  cursor: pointer;
+}
+
+
+.cartButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.cartButton-select {
+  background-color: white;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.cartButton-all {
+  background-color: #007042;
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 5px;
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  color: white;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.payBoxs {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 231px;
+}
+
+.payBox {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-top: 70px;
+}
+
+.payPrices {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px 0 10px;
+  border-bottom: 1px solid rgb(204, 204, 204);
+ }
+
+.payPrice:last-child {
+  margin-bottom: 10px;
+}
+
+.payPrice {
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.minusPrice {
+  color: red;
+}
+
+.allPayPrice {
+  display: flex;  
+  justify-content: space-between;
+  margin: 10px 10px 10px 10px;
+}
+
+.allPayPrice span {
+  padding: 10px;
+}
+
+.orderButtons {
+  display: flex;
+  justify-content: center;
+  padding: 13px 0;
+  background-color: #007042;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  cursor: pointer;
+}
+
+.orderButtons button{
+  background: none;
+  border: none;
+  padding: 0;
+  color: white;
+  font-size: 18px;
+}

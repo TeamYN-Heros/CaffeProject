@@ -10,7 +10,10 @@
     "sugar": "10",
     "protein": "1",
     "Caffeine": "232",
-    "size": "Tall(톨) / 355ml (12 fl oz)"
+    "size": "Tall(톨) / 355ml (12 fl oz)",
+    "id": 1,
+    "price": 6800,
+    "amount": 1
   },
   {
     "Category": "TEA",
@@ -23,7 +26,10 @@
     "sugar": "10",
     "protein": "1",
     "Caffeine": "232",
-    "size": "Tall(톨) / 355ml (12 fl oz)"
+    "size": "Tall(톨) / 355ml (12 fl oz)",
+    "id": 2,
+    "price": 6200,
+    "amount": 1
   },
   {
     "Category": "COFFEE",
@@ -36,7 +42,10 @@
     "sugar": "10",
     "protein": "1",
     "Caffeine": "232",
-    "size": "Tall(톨) / 355ml (12 fl oz)"
+    "size": "Tall(톨) / 355ml (12 fl oz)",
+    "id": 1,
+    "price": 6500,
+    "amount": 1
   },
   {
     "Category": "COFFEE",
@@ -49,7 +58,10 @@
     "sugar": "10",
     "protein": "1",
     "Caffeine": "232",
-    "size": "Tall(톨) / 355ml (12 fl oz)"
+    "size": "Tall(톨) / 355ml (12 fl oz)",
+    "id": 1,
+    "price": 7200,
+    "amount": 1
   },
   {
     "Category": "COFFEE",
@@ -62,7 +74,10 @@
     "sugar": "18",
     "protein": "1",
     "Caffeine": "30",
-    "size": "Tall(톨) / 355ml (12 fl oz)"
+    "size": "Tall(톨) / 355ml (12 fl oz)",
+    "id": 1,
+    "price": 6400,
+    "amount": 1
   },
   {
     "Category": "TEA",
@@ -75,7 +90,10 @@
     "sugar": "14",
     "protein": "1",
     "Caffeine": "65",
-    "size": "Tall(톨) / 355ml (12 fl oz)"
+    "size": "Tall(톨) / 355ml (12 fl oz)",
+    "id": 1,
+    "price": 5200,
+    "amount": 1
   },
   {
     "Category": "COFFEE",
@@ -88,7 +106,10 @@
     "sugar": "24",
     "protein": "1",
     "Caffeine": "30",
-    "size": "Tall(톨) / 355ml (12 fl oz)"
+    "size": "Tall(톨) / 355ml (12 fl oz)",
+    "id": 1,
+    "price": 6900,
+    "amount": 1
   },
   {
     "Category": "COFFEE",
@@ -101,6 +122,9 @@
     "sugar": "11",
     "protein": "3",
     "Caffeine": "155",
-    "size": "Tall(톨) / 355ml (12 fl oz)"
+    "size": "Tall(톨) / 355ml (12 fl oz)",
+    "id": 1,
+    "price": 5700,
+    "amount": 1
   }
 ]
