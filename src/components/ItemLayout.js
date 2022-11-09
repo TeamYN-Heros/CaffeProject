@@ -3,7 +3,7 @@ import Modal from "react-modal/lib/components/Modal";
 import "../CSS/Modal.css";
 
 /* eslint-disable jsx-a11y/alt-text */
-const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
+const ItemLayout = ({ name, image, desc, idx, nutrients, price }) => {
   const [length, setLength] = useState(10); // 펼치기, 접기 기능
   const [toggle, setToggle] = useState(false); // 펼치기, 접기 기능
   const [modal, setModal] = useState(false); // 모달 창 온오프 기능
@@ -147,6 +147,7 @@ const ItemLayout = ({ name, image, desc, idx, nutrients }) => {
             <div>우유 종류 : {view.mMilkType}</div>
             <div>Ice / Hot: {view.mDrinkType}</div>
             <div>수량: {view.mAmount}</div>
+            <div>가격: </div>
           </span>
         </div>
         <hr />

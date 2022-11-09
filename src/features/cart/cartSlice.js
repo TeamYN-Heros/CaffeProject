@@ -2,31 +2,31 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PURGE } from "redux-persist";
 
 const initialState = {
-  favorites: []
+  carts: []
 };
 
 const Cart = createSlice({
-  name: "favorites",
+  name: "carts",
   initialState,
   reducers: {
-    addToFavorites: (state, action) => {
-      const itemInFavorites = state.favorites.find(
+    addToCarts: (state, action) => {
+      const itemInCarts = state.carts.find(
         (item) => item.id === action.payload.id
       );
-      if (itemInFavorites) {
-        itemInFavorites.quantity++;
+      if (itemInCarts) {
+        itemInCarts.quantity++;
       } else {
-        state.favorites.push({ ...action.payload, quantity: 1 });
+        state.carts.push({ ...action.payload, quantity: 1 });
       }
     },
     incrementQuantity: (state, action) => {
-      const item = state.favorites.find(
+      const item = state.carts.find(
         (item) => item.id === action.payload
       );
       item.quantity++;
     },
     decrementQuantity: (state, action) => {
-      const item = state.favorites.find(
+      const item = state.carts.find(
         (item) => item.id === action.payload
       );
       if (item.quantity === 1) {
@@ -36,13 +36,13 @@ const Cart = createSlice({
       }
     },
     removeItem: (state, action) => {
-      const removeItem = state.favorites.filter(
+      const removeItem = state.carts.filter(
         (item) => item.id !== action.payload
       );
-      state.favorites = removeItem;
+      state.carts = removeItem;
     },
     removeAllItem: (state) => {
-      state.favorites = [];
+      state.carts = [];
     },
   },
   extraReducers: (builder) => {
@@ -52,8 +52,7 @@ const Cart = createSlice({
 
 export const cartReducer = Cart.reducer;
 export const {
-  increment, decrement, incrementByAmount,
-  addToFavorites,
+  addToCarts,
   incrementQuantity,
   decrementQuantity,
   removeItem,

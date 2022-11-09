@@ -3,10 +3,10 @@ import Header from "../../components/Header";
 import "../../CSS/cartItemList.css"
 import "../../CSS/cart.css"
 import { useSelector, useDispatch } from 'react-redux'
-import {addToFavorites} from "./cartSlice"
+import {} from "./cartSlice"
 
 const Cart = () => {
-  const carts = useSelector((state) => state.cart.favorites);
+  const carts = useSelector((state) => state.cart.carts);
   const dispatch = useDispatch();
   console.log(carts);
 
@@ -34,8 +34,7 @@ const Cart = () => {
                 <div className="cartBoxItem-3">{cart.name}</div>
                   <div className="cartBoxItem-4">
                     <div className="cartBoxItem-4-Box">
-                      <button className="cartBoxItem-4-Box-1"
-                        onClick={() => dispatch(addToFavorites())}>-</button>
+                      <button className="cartBoxItem-4-Box-1">-</button>
                       <div className="cartBoxItem-4-Box-2">{cart.amount}</div>
                       <button className="cartBoxItem-4-Box-3">+</button>
                     </div>
