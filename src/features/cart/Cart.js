@@ -30,9 +30,9 @@ const Cart = () => {
               <div className="allCartCheck-end">선택삭제</div>
             </div>
             {carts.map((cart, idx) => (
-              <div className="cartBoxItem" key={idx}>
+              <>
                 {cart.accessToken === sessionStorage.getItem("accessToken") ? (
-                  <>
+                  <div className="cartBoxItem" key={idx}>
                     <input type={"checkbox"} className="cartBoxItme-1" />
                     <div className="cartBoxItem-2">
                       <img src={cart.mImage} alt="img" />
@@ -48,9 +48,9 @@ const Cart = () => {
                       </div>
                     </div>
                     <div className="cartBoxItem-5">{cart.price}원</div>
-                  </>
+                  </div>
                 ) : null}
-              </div>
+              </>
             ))}
             <div className="cartButtons">
               <button className="cartButton-select">선택상품 주문</button>
