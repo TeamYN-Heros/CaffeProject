@@ -7,7 +7,7 @@ const Auth = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
+    if (sessionStorage.getItem("accessToken")) {
       dispatch(login());
     } else {
       dispatch(logout());

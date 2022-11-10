@@ -31,19 +31,25 @@ const Cart = () => {
             </div>
             {carts.map((cart, idx) => (
               <div className="cartBoxItem" key={idx}>
-                <input type={"checkbox"} className="cartBoxItme-1" />
-                <div className="cartBoxItem-2">
-                  <img src={cart.mImage} alt="img" />
-                </div>
-                <div className="cartBoxItem-3">{cart.mName}</div>
-                <div className="cartBoxItem-4">
-                  <div className="cartBoxItem-4-Box">
-                    <button className="cartBoxItem-4-Box-1">-</button>
-                    <div className="cartBoxItem-4-Box-2">{cart.mAmount}</div>
-                    <button className="cartBoxItem-4-Box-3">+</button>
-                  </div>
-                </div>
-                <div className="cartBoxItem-5">{cart.price}원</div>
+                {cart.accessToken === sessionStorage.getItem("accessToken") ? (
+                  <>
+                    <input type={"checkbox"} className="cartBoxItme-1" />
+                    <div className="cartBoxItem-2">
+                      <img src={cart.mImage} alt="img" />
+                    </div>
+                    <div className="cartBoxItem-3">{cart.mName}</div>
+                    <div className="cartBoxItem-4">
+                      <div className="cartBoxItem-4-Box">
+                        <button className="cartBoxItem-4-Box-1">-</button>
+                        <div className="cartBoxItem-4-Box-2">
+                          {cart.mAmount}
+                        </div>
+                        <button className="cartBoxItem-4-Box-3">+</button>
+                      </div>
+                    </div>
+                    <div className="cartBoxItem-5">{cart.price}원</div>
+                  </>
+                ) : null}
               </div>
             ))}
             <div className="cartButtons">
@@ -52,7 +58,6 @@ const Cart = () => {
             </div>
           </div>
         </div>
-
         <div className="payBoxs">
           <div className="payBox">
             <div className="payPrices">

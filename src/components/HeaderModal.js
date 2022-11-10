@@ -7,8 +7,7 @@ import MyPage from "./MyPage";
 import { HiOutlineLockOpen, HiUserCircle } from "react-icons/hi";
 import { BiShoppingBag } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../features/authSlice";
+import { useSelector } from "react-redux";
 
 const HeaderModal = () => {
   let key = [];
@@ -25,14 +24,14 @@ const HeaderModal = () => {
       (userObj[index] = JSON.parse(localStorage.getItem(`${key}`)))
   );
 
-  const dispatch = useDispatch();
-
   const shoeModal = (e) => {
     switch (e.target.innerText) {
       case "로그인":
         return setIsLogin(!isLogin);
       case "로그아웃":
-        return localStorage.removeItem("accessToken"), window.location.reload();
+        return (
+          sessionStorage.removeItem("accessToken"), window.location.reload()
+        );
       case "주문내역":
         return console.log("주문내역");
       case "마이페이지":
@@ -47,13 +46,13 @@ const HeaderModal = () => {
         <div className={"headerModalBox"}>
           <ul className={"headerModalUL"}>
             {/*<Link>로 감싸주기*/}
-            <li className={"headerModalLI"} onClick={shoeModal}>
+            <div className={"headerModalLI"} onClick={shoeModal}>
               {auth ? (
                 <>
                   {userObj.map((user) => {
                     if (
                       user.accessToken ===
-                      Number(localStorage.getItem("accessToken"))
+                      Number(sessionStorage.getItem("accessToken"))
                     ) {
                       return CryptoJs.AES.decrypt(user.name, "sha512").toString(
                         CryptoJs.enc.Utf8
@@ -64,25 +63,25 @@ const HeaderModal = () => {
                     <HiOutlineLockOpen />
                     로그아웃
                   </button>
+                  <Link to="/cart">
+                    <li className={"headerModalLI"}>
+                      <AiOutlineShoppingCart />
+                      장바구니
+                    </li>
+                  </Link>
+                  <li className={"headerModalLI"} onClick={shoeModal}>
+                    <BiShoppingBag />
+                    주문내역
+                  </li>
+                  <li className={"headerModalLI"} onClick={shoeModal}>
+                    <HiUserCircle />
+                    마이페이지
+                  </li>
                 </>
               ) : (
                 "로그인"
               )}
-            </li>
-            <Link to="/cart">
-              <li className={"headerModalLI"}>
-                <AiOutlineShoppingCart />
-                장바구니
-              </li>
-            </Link>
-            <li className={"headerModalLI"} onClick={shoeModal}>
-              <BiShoppingBag />
-              주문내역
-            </li>
-            <li className={"headerModalLI"} onClick={shoeModal}>
-              <HiUserCircle />
-              마이페이지
-            </li>
+            </div>
           </ul>
         </div>
       </div>

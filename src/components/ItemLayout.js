@@ -9,7 +9,7 @@ const ItemLayout = ({ name, image, desc, idx, price, nutrients, menuCode }) => {
   const [modal, setModal] = useState(false); // 모달 창 온오프 기능
   const [view, setView] = useState({}); // 결제 창 상품 정보 불러오기
   const [count, setCount] = useState(0); // 수량 정보
-
+  let [timer, setTimer] = useState(120);
   // 수량 추가 및 제거
   const Increase = () => {
     setCount(count + 1);
@@ -56,7 +56,7 @@ const ItemLayout = ({ name, image, desc, idx, price, nutrients, menuCode }) => {
       return;
     }
     setView({
-      accessToken: localStorage.getItem("accessToken"),
+      accessToken: sessionStorage.getItem("accessToken"),
       mImage,
       mName,
       desc,
@@ -117,6 +117,19 @@ const ItemLayout = ({ name, image, desc, idx, price, nutrients, menuCode }) => {
 
   calculator();
   let total = view.price * view.mAmount + sizePrice;
+
+  if (modal === true) {
+    setInterval(() => {
+      if (timer === 0) {
+        sessionStorage.removeItem("accessToken");
+        setTimer(120);
+        ModalClose();
+        return;
+      }
+      setTimer(--timer);
+    }, 1000);
+  }
+
   return (
     <>
       <span className="ItemLayout" id={idx}>
@@ -167,7 +180,8 @@ const ItemLayout = ({ name, image, desc, idx, price, nutrients, menuCode }) => {
         </button>
       </span>
       <Modal isOpen={modal} id="MenuModal">
-        <img src={view.mImage} />
+        <img src={view.mImage} />[
+        {Math.floor(timer / 60) + ":" + Math.floor(timer % 60)}]
         <h3>{view.mName}</h3>
         <hr />
         <p>{view.desc}</p>
