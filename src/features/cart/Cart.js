@@ -2,12 +2,12 @@ import React from "react";
 import Header from "../../components/Header";
 import "../../CSS/cartItemList.css";
 import "../../CSS/cart.css";
-// import { useSelector, useDispatch } from "react-redux";
-import { addToFavorites } from "./cartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import {  } from "./cartSlice";
 
 const Cart = () => {
   // const carts = useSelector((state) => state.cart.favorites);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // console.log(carts);
   let carts = [];
 
@@ -38,7 +38,9 @@ const Cart = () => {
                 <div className="cartBoxItem-3">{cart.mName}</div>
                 <div className="cartBoxItem-4">
                   <div className="cartBoxItem-4-Box">
-                    <button className="cartBoxItem-4-Box-1">-</button>
+                    <button className="cartBoxItem-4-Box-1"
+                      onClick={() => dispatch(incrementQuantity())}>
+                      -</button>
                     <div className="cartBoxItem-4-Box-2">{cart.mAmount}</div>
                     <button className="cartBoxItem-4-Box-3">+</button>
                   </div>
