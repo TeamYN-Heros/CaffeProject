@@ -27,7 +27,7 @@ const LoginForm = () => {
             cryptoJs.enc.Utf8
           )
       ) {
-        localStorage.setItem("accessToken", user.accessToken);
+        sessionStorage.setItem("accessToken", user.accessToken);
         window.location.reload();
       }
     });

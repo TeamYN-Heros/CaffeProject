@@ -38,9 +38,7 @@ const Cart = () => {
                 <div className="cartBoxItem-3">{cart.mName}</div>
                 <div className="cartBoxItem-4">
                   <div className="cartBoxItem-4-Box">
-                    <button className="cartBoxItem-4-Box-1"
-                      onClick={() => dispatch(incrementQuantity())}>
-                      -</button>
+                    <button className="cartBoxItem-4-Box-1">-</button>
                     <div className="cartBoxItem-4-Box-2">{cart.mAmount}</div>
                     <button className="cartBoxItem-4-Box-3">+</button>
                   </div>
@@ -54,7 +52,6 @@ const Cart = () => {
             </div>
           </div>
         </div>
-
         <div className="payBoxs">
           <div className="payBox">
             <div className="payPrices">
