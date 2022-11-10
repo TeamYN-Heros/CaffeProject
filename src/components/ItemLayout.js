@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Modal from "react-modal/lib/components/Modal";
+import { useDispatch } from "react-redux";
+import { addToCarts } from "../features/cart/cartSlice";
 import "../CSS/Modal.css";
 
 /* eslint-disable jsx-a11y/alt-text */
 const ItemLayout = ({ name, image, desc, idx, price, nutrients, menuCode }) => {
+  const dispatch = useDispatch();
   const [length, setLength] = useState(10); // 펼치기, 접기 기능
   const [toggle, setToggle] = useState(false); // 펼치기, 접기 기능
   const [modal, setModal] = useState(false); // 모달 창 온오프 기능
@@ -208,7 +211,15 @@ const ItemLayout = ({ name, image, desc, idx, price, nutrients, menuCode }) => {
           </span>
           <hr />
           <span>
-            <button>담기</button>
+            <button onClick={() => dispatch(addToCarts({
+              name: view.mName,
+              img: view.mImage,
+              amount: view.mAmount,
+              price: view.price,
+              milkType: view.mMilkType,
+              size: view.mSize,
+              drinkType: view.mDrinkType,
+            }))}>담기</button>
             <button>결제하기</button>
             <button id="ModalClose" onClick={ModalClose}>
               닫기
