@@ -19,12 +19,13 @@ const Header = () => {
         if (sessionCount === 0) {
           sessionStorage.removeItem("accessToken");
           setSessionCount(900);
+          window.location.reload();
           return;
         }
         setSessionCount(--sessionCount);
       }, 1000);
     }
-  }, []);
+  }, [sessionCount]);
 
   return (
     <>

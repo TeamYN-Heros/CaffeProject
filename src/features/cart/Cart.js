@@ -3,7 +3,6 @@ import Header from "../../components/Header";
 import "../../CSS/cartItemList.css";
 import "../../CSS/cart.css";
 // import { useSelector, useDispatch } from "react-redux";
-import { addToFavorites } from "./cartSlice";
 
 const Cart = () => {
   // const carts = useSelector((state) => state.cart.favorites);
@@ -24,7 +23,6 @@ const Cart = () => {
           <div className="cartBox">
             <div className="cartBoxName">장바구니</div>
             <div className="allCartCheck">
-              {/* <CartAll/> */}
               <input type={"checkbox"} className="allCartCheck-start" />
               <div className="allCartCheck-center">전체선택</div>
               <div className="allCartCheck-end">선택삭제</div>
